@@ -1,5 +1,5 @@
 library(shiny)
-library(vetiver)
+library(tibble)
 
 api_url <- "http://127.0.0.1:8080/predict"
 
@@ -59,14 +59,9 @@ server <- function(input, output) {
     httr2::request(api_url) |>
       httr2::req_body_json(vals()) |>
       httr2::req_perform() |>
-      httr2::resp_body_json() |> print(),
+      httr2::resp_body_json(),
     ignoreInit = TRUE
   )
-  # pred <- eventReactive(
-  #   input$predict,
-  #   predict(vetiver_endpoint(api_url),vals()),
-  #   ignoreInit = TRUE
-  #   )
 
   # Render to UI
   output$pred <- renderText(pred()$.pred[[1]])

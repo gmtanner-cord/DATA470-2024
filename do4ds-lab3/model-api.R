@@ -21,7 +21,7 @@ v = vetiver_model(model, model_name='penguin_model')
 
 ## Save to Board
 library(pins)
-model_board <- board_folder("/data/model", versioned = TRUE)
+model_board <- board_temp(versioned = TRUE)
 model_board %>% vetiver_pin_write(v)
 
 ## Turn model into API
