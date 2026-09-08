@@ -5,7 +5,7 @@ library(ggplot2)
 library(dbplyr)
 
 con <- DBI::dbConnect(
-  duckdb::duckdb(), 
+  duckdb::duckdb(),
   dbdir = "my-db.duckdb"
 )
 df <- dplyr::tbl(con, "penguins")
